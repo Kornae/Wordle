@@ -6,6 +6,7 @@ import { Button } from "@mui/joy";
 // import AlertVariousStates from "./Winner";
 import AlertColors2 from "./Loser";
 import { generate } from "random-words";
+import BackspaceOutlinedIcon from '@mui/icons-material/BackspaceOutlined';
 import FadeModalDialog from "./Modal";
 // import BackspaceIcon from '@mui/icons-material/Backspace';
 const dictionary = require('node-dictionary.js');
@@ -86,7 +87,7 @@ export default function Main() {
     }, [handleSubmit])
 
     let handleLetterPress = (e) => {
-        const keyValue = e.target.value
+        const keyValue = e.target.id
         setVirtualKeyValue(keyValue)
         setKeyID(e.target.id)
     }
@@ -187,7 +188,7 @@ export default function Main() {
         };
 
         let handleButtonClick = (e) => {
-            if (e.target.id === 'btn') {
+            if (e.target.className === 'btn') {
                 handleKeyPress(e);
             }
         };
@@ -212,7 +213,7 @@ export default function Main() {
     }, [targetWord]);
 
     return (
-        <div id="wordle-container" className="container">
+        <div id="wordle-container">
             <div style={{}} id="box-rows">
                 <div id="box-board">
                     <div id="row-1" className={`row ${falseWord && lastTileIndex === 5 ? 'falseWord' : ''}`}>
@@ -249,7 +250,7 @@ export default function Main() {
                         ))}
                     </div>
                     {/* <FadeModalDialog
-                        word={word}
+                        word={definition}
                         definition={definition}
                     /> */}
                     {winner ? <>
@@ -265,11 +266,11 @@ export default function Main() {
                             target={targetWord} /> </> : null}
                 </div>
             </div>
-            <div id="keyboard" className="container">
+            <div id="keyboard">
                 <div id="keyboard-row1">
                     {keys.slice(0, 10).map((keyLetter, index) => {
                         return (
-                            <div id="keyboard-button"><Button id="btn" value={keyLetter} onClick={handleLetterPress} style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} variant="soft" color="neutral">{keyLetter}</Button></div>
+                            <div id={keyLetter} className="btn" style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} onClick={handleLetterPress} value={keyLetter}>{keyLetter}</div>
                         )
                     })}
                 </div>
@@ -277,22 +278,27 @@ export default function Main() {
                 <div id="keyboard-row2">
                     {keys.slice(10, 19).map(keyLetter => {
                         return (
-                            <div id="keyboard-button"><Button id="btn" value={keyLetter} onClick={handleLetterPress} style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} variant="soft" color="neutral">{keyLetter}</Button></div>
+                            <div id={keyLetter} className="btn" style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} onClick={handleLetterPress} value={keyLetter}>{keyLetter}</div>
+
+
                         )
                     })}
                 </div>
 
                 <div id="keyboard-row3">
-                    <div id="keyboard-button"><Button onClick={handleLetterPress} id="btn" value={'Backspace'} variant="soft" color="neutral">DELETE</Button></div>
+                    <div id="Backspace" className="btn" onClick={handleLetterPress}><BackspaceOutlinedIcon id="Backspace" /></div>
                     {keys.slice(19, 26).map(keyLetter => {
                         return (
-                            <div id="keyboard-button"><Button id="btn" value={keyLetter} onClick={handleLetterPress} style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} variant="soft" color="neutral">{keyLetter}</Button></div>
+                            <div id={keyLetter} className="btn" style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} onClick={handleLetterPress} value={keyLetter}>{keyLetter}</div>
                         )
                     })}
-                    <div id="keyboard-button" ><Button onClick={handleSubmit} id="btn" variant="soft" color="neutral">ENTER</Button></div>
+                    <div id="keyboard-button" className="btn" onClick={handleSubmit}>Enter</div>
+
                 </div>
             </div>
         </div>
     )
 }
 
+
+{/* <div id="keyboard-button"><Button id="btn" value={keyLetter} onClick={handleLetterPress} style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} variant="soft" color="neutral">{keyLetter}</Button></div> */ }
