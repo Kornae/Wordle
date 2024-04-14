@@ -12,8 +12,8 @@ import Cloud from '@mui/icons-material/Cloud';
 import Sun from '@mui/icons-material/LightMode';
 import Box from '@mui/joy/Box';
 import Chip from '@mui/joy/Chip';
-// import BackspaceIcon from '@mui/icons-material/Backspace';
 const dictionary = require('node-dictionary.js');
+
 
 export default function Main() {
     const [letters, setLetters] = useState(Array(30).fill(''));
@@ -258,8 +258,8 @@ export default function Main() {
                         definition={definition}
                     /> */}
                     {winner ? <>
-                        <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'center' }}>
-                            <Chip sx={{ padding: '4px 12px', borderRadius: '20px' }} variant="soft">
+                        <Box id="chip" sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'center' }}>
+                            <Chip sx={{ fontSize: '12px', fontWeight: 'bold', fontFamily: "Montserrat" }} variant="soft">
                                 You Won! 🏆
                             </Chip>
                         </Box>
@@ -269,6 +269,7 @@ export default function Main() {
                             target={targetWord} /> </> : null}
                 </div>
             </div>
+
             <div id="keyboard">
                 <div id="keyboard-row1">
                     {keys.slice(0, 10).map((keyLetter, index) => {
@@ -289,7 +290,7 @@ export default function Main() {
                 </div>
 
                 <div id="keyboard-row3">
-                    <div id="Backspace" className="btn" onClick={handleLetterPress}>Delete</div>
+                    <div id="Backspace" className="btn" onClick={handleLetterPress}><BackspaceOutlinedIcon /></div>
                     {keys.slice(19, 26).map(keyLetter => {
                         return (
                             <div id={keyLetter} className="btn" style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} onClick={handleLetterPress} value={keyLetter}>{keyLetter}</div>

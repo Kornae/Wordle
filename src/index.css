@@ -159,23 +159,45 @@ code {
   justify-content: stretch;
 }
 
+#chip {
+  display: block;
+  font-size: 10px;
+  color: var(--color);
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: #edf0f7;
+  text-align: center;
+  width: max-content;
+  left: 0;
+  right: 0;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .btn {
-  border-radius: 4px;
-  width: 100%;
-  font-size: 1rem;
-  color: #3a3a3c;
-  background-color: #DCE1ED;
-  font-family: "Helvetica Neue";
-  font-weight: 600;
-  font-style: normal;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background-color: #dce1ed;
+  color: #414a5e;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  user-select: none;
   display: flex;
   flex: 1 1;
-  padding: 10px;
+  font-size: 17px;
+  font-weight: 700;
+  justify-content: center;
   margin: 3px;
+  min-height: 46px;
+  padding: 3px;
+  text-decoration: inherit;
+  text-transform: capitalize;
+  transition: .2s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, .3);
+
+
 }
 
 .btn:hover {
@@ -595,8 +617,8 @@ code {
 
 @media (max-width: 767px) {
   #inner-tile {
-    height: 55px;
-    width: 55px;
+    height: 50px;
+    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -628,19 +650,8 @@ code {
   }
 
   .btn {
-    border-radius: 5px;
-    width: 100%;
-    font-size: .5rem;
-    color: #3a3a3c;
-    background-color: #DCE1ED;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex: 1 1;
+    font-size: 12px;
+    min-height: 42px;
   }
 
   #letters {
