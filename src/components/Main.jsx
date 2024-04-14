@@ -8,6 +8,10 @@ import AlertColors2 from "./Loser";
 import { generate } from "random-words";
 import BackspaceOutlinedIcon from '@mui/icons-material/BackspaceOutlined';
 import FadeModalDialog from "./Modal";
+import Cloud from '@mui/icons-material/Cloud';
+import Sun from '@mui/icons-material/LightMode';
+import Box from '@mui/joy/Box';
+import Chip from '@mui/joy/Chip';
 // import BackspaceIcon from '@mui/icons-material/Backspace';
 const dictionary = require('node-dictionary.js');
 
@@ -250,16 +254,15 @@ export default function Main() {
                         ))}
                     </div>
                     {/* <FadeModalDialog
-                        word={definition}
+                        word={word}
                         definition={definition}
                     /> */}
                     {winner ? <>
-                        {/* <FadeModalDialog
-                            word={word}
-                            definition={definition}
-                        /> */}
-                        {/* <AlertVariousStates /> */}
-
+                        <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'center' }}>
+                            <Chip sx={{ padding: '4px 12px', borderRadius: '20px' }} variant="soft">
+                                You Won! 🏆
+                            </Chip>
+                        </Box>
                     </> : null}
                     {loser ? <>
                         <AlertColors2

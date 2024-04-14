@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 body {
   margin: 0;
@@ -48,12 +49,13 @@ code {
 }
 
 #logo {
-  font-size: 1rem;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
   font-weight: 600;
+  font-family: "Montserrat", sans-serif;
 }
 
 
@@ -69,9 +71,9 @@ code {
   grid-template-areas: 'br'
     'kb';
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: auto auto;
   place-items: center;
-  gap: 1rem;
+  /* gap: 1rem; */
   width: auto;
 }
 
@@ -153,13 +155,11 @@ code {
 #keyboard-row3 {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: row;
   width: 100%;
   justify-content: stretch;
 }
 
-#keyboard-button {}
 
 .btn {
   border-radius: 4px;
@@ -193,6 +193,10 @@ code {
 .enter:focus,
 .delete:focus {
   outline: none;
+}
+
+#chip {
+  display: 'none'
 }
 
 /* ----------------------------------------------
@@ -338,9 +342,6 @@ code {
     opacity: 1;
   }
 }
-
-
-
 
 
 @keyframes bounceAnimation {
@@ -610,12 +611,11 @@ code {
     grid-area: kb;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 5px;
     align-items: center;
     justify-content: center;
     width: 100vw;
     box-sizing: border-box;
-
   }
 
   #keyboard-row1,
@@ -623,32 +623,30 @@ code {
   #keyboard-row3 {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: row;
     width: 100%;
     justify-content: stretch;
   }
 
   .btn {
-    border-radius: 4px;
+    border-radius: 5px;
     width: 100%;
-    font-size: .8rem;
+    font-size: .85rem;
     color: #3a3a3c;
     background-color: #DCE1ED;
-    font-family: "Helvetica Neue";
-    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
     font-style: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     display: flex;
     flex: 1 1;
-    padding: 6px;
   }
 
   #letters {
-    font-family: "Helvetica Neue";
-    font-weight: 900;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
     font-style: normal;
     font-size: 2rem;
     display: grid;
@@ -656,6 +654,4 @@ code {
     margin: 0;
     line-height: 0;
   }
-
-  #keyboard-button {}
 }
