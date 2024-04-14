@@ -44,7 +44,6 @@ export default function Main() {
     const isDictionaryWord = require('check-dictionary-word');
     const keys = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M']
     const [virtualKeyValue, setVirtualKeyValue] = useState('')
-    const [keyID, setKeyID] = useState('')
 
     const correctStyle = {
         WebkitAnimation: 'scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
@@ -76,11 +75,9 @@ export default function Main() {
 
     useEffect(() => {
         let handleKeyPress = (e) => {
-
             if (e.key === 'Enter') {
                 e.preventDefault();
                 handleSubmit();
-
             }
         }
 
@@ -93,14 +90,10 @@ export default function Main() {
     let handleLetterPress = (e) => {
         const keyValue = e.target.id
         setVirtualKeyValue(keyValue)
-        setKeyID(e.target.id)
     }
 
 
-
-
     function handleWordComparison() {
-        console.log(userInput)
         if (isDictionaryWord(userInput) === false && count === lastTileIndex) {
             setFalseWord(true)
         }
@@ -165,13 +158,8 @@ export default function Main() {
         }
     }
 
-    // partialArray.forEach(item => {
-    //          console.log(item)
-    //     })
-
     useEffect(() => {
         const currentIndex = count;
-
         let handleKeyPress = (e) => {
             let inputValue = e.key;
             let vKey = virtualKeyValue;
@@ -187,6 +175,9 @@ export default function Main() {
                     newLetters[currentIndex - 1] = '';
                     setLetters(newLetters);
                     setCount(prevInput => prevInput - 1);
+                } else if (vKey === 'Enter') {
+                    e.preventDefault();
+                    handleSubmit();
                 }
             }
         };
@@ -296,13 +287,10 @@ export default function Main() {
                             <div id={keyLetter} className="btn" style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} onClick={handleLetterPress} value={keyLetter}>{keyLetter}</div>
                         )
                     })}
-                    <div id="keyboard-button" className="btn" onClick={handleSubmit}>Enter</div>
+                    <div id="Enter" className="btn" onClick={handleLetterPress}>Enter</div>
 
                 </div>
             </div>
         </div>
     )
 }
-
-
-{/* <div id="keyboard-button"><Button id="btn" value={keyLetter} onClick={handleLetterPress} style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} variant="soft" color="neutral">{keyLetter}</Button></div> */ }

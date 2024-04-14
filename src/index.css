@@ -73,7 +73,6 @@ code {
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   place-items: center;
-  /* gap: 1rem; */
   width: auto;
 }
 
@@ -206,8 +205,9 @@ code {
 }
 
 .btn:active {
-  background-color: green;
-  border: none;
+  transform: scale(1); /* Prevent scaling */
+  border-color: transparent !important; /* Keep border color same as normal state */
+  background-color:#B0B9CE !important
 }
 
 .btn:focus,
