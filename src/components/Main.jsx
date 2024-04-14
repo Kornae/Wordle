@@ -289,7 +289,7 @@ export default function Main() {
                 </div>
 
                 <div id="keyboard-row3">
-                    <div id="Backspace" className="btn" onClick={handleLetterPress}><BackspaceOutlinedIcon id="Backspace" /></div>
+                    <div id="Backspace" className="btn" onClick={handleLetterPress}>Delete</div>
                     {keys.slice(19, 26).map(keyLetter => {
                         return (
                             <div id={keyLetter} className="btn" style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} onClick={handleLetterPress} value={keyLetter}>{keyLetter}</div>
