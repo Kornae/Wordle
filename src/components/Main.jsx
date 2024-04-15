@@ -12,6 +12,7 @@ import Cloud from '@mui/icons-material/Cloud';
 import Sun from '@mui/icons-material/LightMode';
 import Box from '@mui/joy/Box';
 import Chip from '@mui/joy/Chip';
+import Typography from '@mui/joy/Typography';
 const dictionary = require('node-dictionary.js');
 
 
@@ -90,6 +91,7 @@ export default function Main() {
     let handleLetterPress = (e) => {
         const keyValue = e.target.id
         setVirtualKeyValue(keyValue)
+        console.log(keyValue)
     }
 
 
@@ -281,7 +283,7 @@ export default function Main() {
                 </div>
 
                 <div id="keyboard-row3">
-                    <div id="Backspace" className="btn" onClick={handleLetterPress}><BackspaceOutlinedIcon /></div>
+                    <div id="Backspace" className="btn" onClick={handleLetterPress}>Delete</div>
                     {keys.slice(19, 26).map(keyLetter => {
                         return (
                             <div id={keyLetter} className="btn" style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} onClick={handleLetterPress} value={keyLetter}>{keyLetter}</div>
