@@ -8,11 +8,8 @@ import AlertColors2 from "./Loser";
 import { generate } from "random-words";
 import BackspaceOutlinedIcon from '@mui/icons-material/BackspaceOutlined';
 import FadeModalDialog from "./Modal";
-import Cloud from '@mui/icons-material/Cloud';
-import Sun from '@mui/icons-material/LightMode';
 import Box from '@mui/joy/Box';
 import Chip from '@mui/joy/Chip';
-import Typography from '@mui/joy/Typography';
 const dictionary = require('node-dictionary.js');
 
 
@@ -145,7 +142,6 @@ export default function Main() {
                 }
             }
 
-
         } else if (userInput === targetWord && count === lastTileIndex && isDictionaryWord(userInput) === true) {
             setCount(30)
             setWinner(true)
@@ -157,6 +153,17 @@ export default function Main() {
             setWinner(false)
             setLoser(true)
             setArray(prevArray => [...prevArray, { ...newTarget }]);
+        }
+    }
+
+    const handleBackSpace = (e) => {
+        const currentIndex = count;
+        if (count > 0 && currentIndex > firstTileIndex) {
+            setFalseWord(false);
+            const newLetters = [...letters];
+            newLetters[currentIndex - 1] = '';
+            setLetters(newLetters);
+            setCount(prevInput => prevInput - 1);
         }
     }
 
@@ -276,14 +283,12 @@ export default function Main() {
                     {keys.slice(10, 19).map(keyLetter => {
                         return (
                             <div id={keyLetter} className="btn" style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} onClick={handleLetterPress} value={keyLetter}>{keyLetter}</div>
-
-
                         )
                     })}
                 </div>
 
                 <div id="keyboard-row3">
-                    <div id="Backspace" className="btn" onClick={handleLetterPress}>Delete</div>
+                    <div id="Backspace" className="btn" onClick={handleLetterPress}><BackspaceOutlinedIcon onClick={handleBackSpace} /></div>
                     {keys.slice(19, 26).map(keyLetter => {
                         return (
                             <div id={keyLetter} className="btn" style={correctArray.includes(keyLetter) ? correctStyle : partialArray.includes(keyLetter) ? partialStyle : incorrectArray.includes(keyLetter) ? incorrectStyle : null} onClick={handleLetterPress} value={keyLetter}>{keyLetter}</div>
