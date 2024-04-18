@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Typography from '@mui/joy/Typography';
-
 
 export default function BoxSystemProps(props) {
     return (

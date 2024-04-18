@@ -27,34 +27,55 @@ body {
 #home {
   display: grid;
   grid-template-areas: 'nav'
-    'main';
+    'main'
+    'ft';
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto;
 }
 
 #nav {
   grid-area: nav;
   background-color: transparent !important;
+  width: 100%;
 }
 
 #navbar {
   background-color: transparent !important;
   font-size: 1rem;
+  --bs-navbar-brand-margin-end: 0rem;
 }
 
-#icons {
-  margin: 5px;
+#footer {
+  grid-area: ft;
+}
+
+#icons:focus,
+#modal:focus {
+  outline: none;
 }
 
 #logo {
-  font-size: 1.3rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  font-weight: 600;
+  font-weight: 700;
   font-family: "Montserrat", sans-serif;
 }
+
+#example {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  justify-content: stretch;
+}
+
+.example-tile {
+  border: solid 1.4px #DFE1E9 !important;
+}
+
 
 
 #main {
@@ -144,6 +165,29 @@ body {
   margin-bottom: 0px;
 }
 
+#inner-tile-2 {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #FBFCFF;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#letters-2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.77rem;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  line-height: 0;
+
+}
 
 
 #keyboard-row1,
@@ -228,6 +272,10 @@ body {
 
 #chip {
   display: 'none'
+}
+
+.partialWord {
+  background-color: #F3C237 !important;
 }
 
 /* ----------------------------------------------

@@ -1,17 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import React from "react";
 import BoxSx from "./Box";
-import { Button } from "@mui/joy";
-// import BackspaceOutlinedIcon from '@mui/icons-material/BackspaceOutlined';
-// import AlertVariousStates from "./Winner";
-import AlertColors2 from "./Loser";
 import { generate } from "random-words";
 import BackspaceOutlinedIcon from '@mui/icons-material/BackspaceOutlined';
-import FadeModalDialog from "./Modal";
 import Box from '@mui/joy/Box';
 import Chip from '@mui/joy/Chip';
-const dictionary = require('node-dictionary.js');
-
 
 export default function Main() {
     const [letters, setLetters] = useState(Array(30).fill(''));
@@ -23,7 +16,6 @@ export default function Main() {
     const [firstTileIndex, setFirstTileIndex] = useState(0)
     const [lastTileIndex, setLastTileIndex] = useState(5)
     const [word, setWord] = useState("");
-    const [definition, setDefinition] = useState("")
     const targetWord = word.split('').join(',').toUpperCase().replace(/,/g, '')
     let userInput = letters.slice(firstTileIndex, lastTileIndex).join(',').replace(/,/g, '');
     const newTarget = [...userInput];
@@ -36,12 +28,71 @@ export default function Main() {
     const [partialArray, setPartialArray] = useState([]);
     const [incorrectArray, setIncorrectArray] = useState([]);
     const [correctArray, setCorrectArray] = useState([]);
-    const [allLetters, setAllLetters] = useState([]);
-    const [bgColor, setBgColor] = useState(null)
-
     const isDictionaryWord = require('check-dictionary-word');
     const keys = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M']
-    const [virtualKeyValue, setVirtualKeyValue] = useState('')
+    const [virtualKeyValue, setVirtualKeyValue] = useState('');
+    let gamesPlayed = localStorage.getItem('gamesPlayed');
+    let gamesWon = localStorage.getItem('gamesWon');
+    let currentStreak = localStorage.getItem('currentStreak');
+    let winPercentage = localStorage.getItem('winPercentage');
+
+    if (gamesPlayed !== null) {
+        gamesPlayed = parseInt(gamesPlayed);
+    } else {
+        gamesPlayed = 0;
+    }
+ 
+    function updateGamesPlayed(additionalGames) {
+  
+        gamesPlayed += additionalGames;
+
+        localStorage.setItem('gamesPlayed', gamesPlayed);
+    }
+
+
+    if (gamesWon !== null) {
+        gamesWon = parseInt(gamesWon);
+    } else {
+        gamesWon = 0;
+    }
+ 
+    function updateGamesWon(winsChange) {
+  
+        gamesWon += winsChange;
+
+        localStorage.setItem('gamesWon', gamesWon);
+    }
+
+
+    if (currentStreak !== null) {
+        currentStreak = parseInt(currentStreak);
+    } else {
+        currentStreak = 0;
+    }
+ 
+    function updateCurrentStreak(streakChange) {
+  
+        currentStreak += streakChange;
+
+        localStorage.setItem('currentStreak', currentStreak);
+    }
+
+
+
+    if (winPercentage !== null) {
+        winPercentage = parseInt(winPercentage);
+    } else {
+        winPercentage = 0;
+    }
+ 
+    function updateWinPercentage(winPercentageChange) {
+  
+        winPercentage += winPercentageChange;
+
+        localStorage.setItem('winPercentage', winPercentage);
+    }
+
+
 
     const correctStyle = {
         WebkitAnimation: 'scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
@@ -106,7 +157,6 @@ export default function Main() {
                 if (userInput[i] === targetWord[i]) {
                     newTarget[i] = 'G';
                     setCorrectArray(prevArray => [...prevArray, ...userInput[i]]);
-                    setAllLetters(prevArray => [...prevArray, ...userInput[i]]);
                     console.log(`${userInput[i]} is in the correct spot!`);
                     matched.push(userInput[i])
                     correctTracker[userInput[i]] = true;
@@ -127,7 +177,6 @@ export default function Main() {
 
                         partialTracker[userInput[i]] = true
                         partial.push(userInput[i]);
-                        setAllLetters(prevArray => [...prevArray, ...userInput[i]]);
                         setPartialArray(prevArray => [...prevArray, ...userInput[i]]);
                         console.log(`${userInput[i]} is in the wrong spot, but is still included in ${targetWord}!`);
                     } else {
@@ -138,7 +187,6 @@ export default function Main() {
                     console.log(`${userInput[i]} is not a letter in the word!`);
                     newTarget[i] = '-';
                     setIncorrectArray(prevArray => [...prevArray, ...userInput[i]]);
-                    setAllLetters(prevArray => [...prevArray, ...userInput[i]]);
                 }
             }
 
@@ -147,12 +195,17 @@ export default function Main() {
             setWinner(true)
             setArray(prevArray => [...prevArray, { ...newTarget }]);
             setCorrectArray(prevArray => [...prevArray, ...userInput]);
-            setAllLetters(prevArray => [...prevArray, ...userInput]);
+            updateGamesPlayed(1);
+            updateGamesWon(1)
+            updateCurrentStreak(1)
+            updateWinPercentage(Math.round((gamesWon / gamesPlayed) * 100))
         }
         if (count === 30 && userInput !== targetWord && isDictionaryWord(userInput) === true) {
             setWinner(false)
             setLoser(true)
             setArray(prevArray => [...prevArray, { ...newTarget }]);
+            updateGamesPlayed(1);
+            localStorage.removeItem('currentStreak');
         }
     }
 
@@ -207,15 +260,6 @@ export default function Main() {
         };
     }, [count, letters, firstTileIndex, lastTileIndex, virtualKeyValue]);
 
-    useEffect(() => {
-        const fetchWordDefinition = async () => {
-            let word1 = await dictionary.enFindWord(targetWord);
-            setDefinition(word1.meaning);
-        };
-
-        fetchWordDefinition();
-    }, [targetWord]);
-
     return (
         <div id="wordle-container">
             <div style={{}} id="box-rows">
@@ -253,20 +297,21 @@ export default function Main() {
                             <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 30 ? null : loser ? null : 'solid 1.4px #DFE1E9' }} className={(winner && lastTileIndex === 30 ? 'winner' : counter >= 6 && ((array[5][index] === 'G') ? 'correctWord' : array[5][index] === 'Y' ? 'partialLetters' : array[5][index] === '-' ? 'incorrectWord' : null))} key={index + 1}><BoxSx letter={letter} /></div>
                         ))}
                     </div>
-                    {/* <FadeModalDialog
-                        word={word}
-                        definition={definition}
-                    /> */}
+
                     {winner ? <>
-                        <Box id="chip" sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'center' }}>
-                            <Chip sx={{ fontSize: '12px', fontWeight: 'bold', fontFamily: "Montserrat" }} variant="soft">
-                                You Won! 🏆
-                            </Chip>
-                        </Box>
-                    </> : null}
-                    {loser ? <>
-                        <AlertColors2
-                            target={targetWord} /> </> : null}
+                        <div>
+                            <Box id="chip" sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'center' }}>
+                                <Chip sx={{ fontSize: '12px', fontWeight: 'bold', fontFamily: "Montserrat" }} variant="soft">
+                                    You Won! 🏆
+                                </Chip>
+                            </Box>
+                        </div>
+                    </> : loser ? <Box id="chip" sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'center' }}>
+                        <Chip sx={{ fontSize: '14px', fontWeight: 'bold', fontFamily: "Montserrat" }} variant="soft">
+                            {targetWord}
+
+                        </Chip>
+                    </Box> : null}
                 </div>
             </div>
 
@@ -301,3 +346,9 @@ export default function Main() {
         </div>
     )
 }
+
+
+export const gamesPlayed = localStorage.getItem('gamesPlayed');
+export const gamesWon = localStorage.getItem('gamesWon');
+export const currentStreak = localStorage.getItem('currentStreak');
+export const winPercentage = localStorage.getItem('winPercentage');
