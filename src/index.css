@@ -10,6 +10,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffffff;
   color: #414a5e !important;
+    overflow-x: hidden !important;
 }
 
 #letters {
@@ -31,6 +32,7 @@ body {
     'ft';
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto;
+  
 }
 
 #nav {
