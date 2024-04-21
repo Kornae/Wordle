@@ -10,19 +10,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffffff;
   color: #414a5e !important;
-    overflow-y: scroll !important;
-      overflow-x: hidden !important;
-      margin: 0;
-      padding: 0;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  margin: 0;
+  padding: 0;
 }
 
 #my-canvas {
-position: absolute;
-overflow: hidden;
--webkit-animation: text-focus-in 6s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  position: absolute;
+  overflow: hidden;
+  -webkit-animation: text-focus-in 6s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   animation: text-focus-in 6s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   /* z-index: 2; */
-  height:100%;
+  height: 100%;
   width: 100vw;
 }
 
@@ -45,8 +45,8 @@ overflow: hidden;
     'ft';
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto;
-  
-  
+
+
 }
 
 #nav {
@@ -125,15 +125,15 @@ overflow: hidden;
 }
 
 #keyboard {
-    grid-area: kb;
-      display: flex;
-      flex-direction: column;
-      padding: 5px;
-      align-items: center;
-      justify-content: center;
-      width: 45vw;
-      box-sizing: border-box;
-      z-index: 2;
+  grid-area: kb;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  width: 45vw;
+  box-sizing: border-box;
+  z-index: 2;
 }
 
 #box-board {
@@ -722,23 +722,24 @@ overflow: hidden;
 
 @media (min-width: 376px) and (max-width: 475px) {
   #inner-tile {
-      height: 62px;
-      width: 62px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 4px;
-      background-color: #FBFCFF;
-      margin-top: 0px;
-      margin-bottom: 0px;
-    }
+    height: 62px;
+    width: 62px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background-color: #FBFCFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
   .btn {
     font-size: 14px;
     font-family: "Montserrat", sans-serif;
   }
 
   #letters {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   #keyboard {
