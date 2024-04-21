@@ -16,7 +16,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 2.6rem;
+  font-size: 2.5rem;
   display: grid;
   place-items: center;
   margin: 0;
@@ -113,7 +113,7 @@ body {
       padding: 5px;
       align-items: center;
       justify-content: center;
-      width: 50vw;
+      width: 45vw;
       box-sizing: border-box;
 }
 
@@ -675,8 +675,8 @@ body {
 
 @media (max-width: 375px) {
   #inner-tile {
-    width: 55px;
-    height: 55px;
+    width: 52px;
+    height: 52px;
   }
 
   .btn {
@@ -686,7 +686,7 @@ body {
   }
 
   #letters {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
   #keyboard {
@@ -701,10 +701,10 @@ body {
   }
 }
 
-@media (max-width: 475px) {
+@media (min-width: 376px) and (max-width: 475px) {
   #inner-tile {
-      height: 65px;
-      width: 65px;
+      height: 62px;
+      width: 62px;
       display: flex;
       justify-content: center;
       align-items: center;
