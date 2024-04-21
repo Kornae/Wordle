@@ -5,6 +5,7 @@ import { generate } from "random-words";
 import BackspaceOutlinedIcon from '@mui/icons-material/BackspaceOutlined';
 import Box from '@mui/joy/Box';
 import Chip from '@mui/joy/Chip';
+import party from "party-js";
 
 export default function Main() {
     const [letters, setLetters] = useState(Array(30).fill(''));
@@ -41,9 +42,9 @@ export default function Main() {
     } else {
         gamesPlayed = 0;
     }
- 
+
     function updateGamesPlayed(additionalGames) {
-  
+
         gamesPlayed += additionalGames;
 
         localStorage.setItem('gamesPlayed', gamesPlayed);
@@ -55,9 +56,9 @@ export default function Main() {
     } else {
         gamesWon = 0;
     }
- 
+
     function updateGamesWon(winsChange) {
-  
+
         gamesWon += winsChange;
 
         localStorage.setItem('gamesWon', gamesWon);
@@ -69,9 +70,9 @@ export default function Main() {
     } else {
         currentStreak = 0;
     }
- 
+
     function updateCurrentStreak(streakChange) {
-  
+
         currentStreak += streakChange;
 
         localStorage.setItem('currentStreak', currentStreak);
@@ -84,9 +85,9 @@ export default function Main() {
     } else {
         winPercentage = 0;
     }
- 
+
     function updateWinPercentage(winPercentageChange) {
-  
+
         winPercentage += winPercentageChange;
 
         localStorage.setItem('winPercentage', winPercentage);
@@ -191,6 +192,8 @@ export default function Main() {
             }
 
         } else if (userInput === targetWord && count === lastTileIndex && isDictionaryWord(userInput) === true) {
+            handleButtonClick()
+            handleButtonClick()
             setCount(30)
             setWinner(true)
             setArray(prevArray => [...prevArray, { ...newTarget }]);
@@ -260,9 +263,18 @@ export default function Main() {
         };
     }, [count, letters, firstTileIndex, lastTileIndex, virtualKeyValue]);
 
+    const runButton = document.getElementById("box-board");
+
+    let handleButtonClick = () => {
+        party.confetti(runButton, {
+            count: party.variation.range(40, 60),
+        });
+    }
+
     return (
         <div id="wordle-container">
             <div style={{}} id="box-rows">
+
                 <div id="box-board">
                     <div id="row-1" className={`row ${falseWord && lastTileIndex === 5 ? 'falseWord' : ''}`}>
                         {letters.slice(0, 5).map((letter, index) => (
