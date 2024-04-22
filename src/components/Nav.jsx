@@ -60,7 +60,7 @@ export default function Nav(props) {
 
                 <span className="navbar-brand brand mr-auto" id="logo">
                     <span style={{ margin: 3 }}>
-                        <Tooltip title="Info" onClick={() => setOpen(true)}>
+                        <Tooltip title="Info" onClick={() => setOpen2(true)}>
                             <IconButton>
                                 <LeaderboardOutlinedIcon color="neutral" />
                             </IconButton>
