@@ -279,34 +279,34 @@ export default function Main() {
                     <div id="row-1" className={`row ${falseWord && lastTileIndex === 5 ? 'falseWord' : ''}`}>
                         {letters.slice(0, 5).map((letter, index) => (
                             <div id="inner-tile" className={(winner && lastTileIndex === 5 ? 'winner' : counter >= 1 && ((array[0][index] === 'G') ? 'correctWord' : array[0][index] === 'Y' ? 'partialLetters' : array[0][index] === '-' ? 'incorrectWord' : null))} style={{
-                                animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 5 ? null : counter < 1 ? 'solid 1.4px #DFE1E9' : null
+                                animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 5 ? null : counter < 1 ? 'solid 2px #ededed' : null
                             }} key={index + 1}> <BoxSx letter={letter} /></div>
                         ))}
                     </div>
                     <div id="row-2" className={`row ${falseWord && lastTileIndex === 10 ? 'falseWord' : ''}`}>
                         {letters.slice(5, 10).map((letter, index) => (
-                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 10 ? null : counter < 2 ? 'solid 1.4px #DFE1E9' : null }} className={(winner && lastTileIndex === 10 ? 'winner' : counter >= 2 && ((array[1][index] === 'G') ? 'correctWord' : array[1][index] === 'Y' ? 'partialLetters' : array[1][index] === '-' ? 'incorrectWord' : null))} key={index + 1}>
+                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 10 ? null : counter < 2 ? 'solid 2px #ededed' : null }} className={(winner && lastTileIndex === 10 ? 'winner' : counter >= 2 && ((array[1][index] === 'G') ? 'correctWord' : array[1][index] === 'Y' ? 'partialLetters' : array[1][index] === '-' ? 'incorrectWord' : null))} key={index + 1}>
                                 <BoxSx letter={letter} /></div>
                         ))}
                     </div>
                     <div id="row-3" className={`row ${falseWord && lastTileIndex === 15 ? 'falseWord' : ''}`}>
                         {letters.slice(10, 15).map((letter, index) => (
-                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 15 ? null : counter < 3 ? 'solid 1.4px #DFE1E9' : null }} className={(winner && lastTileIndex === 15 ? 'winner' : counter >= 3 && ((array[2][index] === 'G') ? 'correctWord' : array[2][index] === 'Y' ? 'partialLetters' : array[2][index] === '-' ? 'incorrectWord' : null))} key={index + 1}><BoxSx letter={letter} /></div>
+                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 15 ? null : counter < 3 ? 'solid 2px #ededed' : null }} className={(winner && lastTileIndex === 15 ? 'winner' : counter >= 3 && ((array[2][index] === 'G') ? 'correctWord' : array[2][index] === 'Y' ? 'partialLetters' : array[2][index] === '-' ? 'incorrectWord' : null))} key={index + 1}><BoxSx letter={letter} /></div>
                         ))}
                     </div>
                     <div id="row-4" className={`row ${falseWord && lastTileIndex === 20 ? 'falseWord' : ''}`}>
                         {letters.slice(15, 20).map((letter, index) => (
-                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 20 ? null : counter < 4 ? 'solid 1.4px #DFE1E9' : null }} className={(winner && lastTileIndex === 20 ? 'winner' : counter >= 4 && ((array[3][index] === 'G') ? 'correctWord' : array[3][index] === 'Y' ? 'partialLetters' : array[3][index] === '-' ? 'incorrectWord' : null))} key={index + 1}><BoxSx letter={letter} /></div>
+                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 20 ? null : counter < 4 ? 'solid 2px #ededed' : null }} className={(winner && lastTileIndex === 20 ? 'winner' : counter >= 4 && ((array[3][index] === 'G') ? 'correctWord' : array[3][index] === 'Y' ? 'partialLetters' : array[3][index] === '-' ? 'incorrectWord' : null))} key={index + 1}><BoxSx letter={letter} /></div>
                         ))}
                     </div>
                     <div id="row-5" className={`row ${falseWord && lastTileIndex === 25 ? 'falseWord' : ''}`}>
                         {letters.slice(20, 25).map((letter, index) => (
-                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 25 ? null : counter < 5 ? 'solid 1.4px #DFE1E9' : null }} className={(winner && lastTileIndex === 25 ? 'winner' : counter >= 5 && ((array[4][index] === 'G') ? 'correctWord' : array[4][index] === 'Y' ? 'partialLetters' : array[4][index] === '-' ? 'incorrectWord' : null))} key={index + 1}><BoxSx letter={letter} /></div>
+                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 25 ? null : counter < 5 ? 'solid 2px #ededed' : null }} className={(winner && lastTileIndex === 25 ? 'winner' : counter >= 5 && ((array[4][index] === 'G') ? 'correctWord' : array[4][index] === 'Y' ? 'partialLetters' : array[4][index] === '-' ? 'incorrectWord' : null))} key={index + 1}><BoxSx letter={letter} /></div>
                         ))}
                     </div>
                     <div id="row-6" className={`row ${falseWord && lastTileIndex === 30 ? 'falseWord' : ''}`}>
                         {letters.slice(25, 30).map((letter, index) => (
-                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 30 ? null : loser ? null : 'solid 1.4px #DFE1E9' }} className={(winner && lastTileIndex === 30 ? 'winner' : counter >= 6 && ((array[5][index] === 'G') ? 'correctWord' : array[5][index] === 'Y' ? 'partialLetters' : array[5][index] === '-' ? 'incorrectWord' : null))} key={index + 1}><BoxSx letter={letter} /></div>
+                            <div id="inner-tile" style={{ animationDelay: `${index % 5 * 350}ms`, border: winner && lastTileIndex === 30 ? null : loser ? null : 'solid 2px #ededed' }} className={(winner && lastTileIndex === 30 ? 'winner' : counter >= 6 && ((array[5][index] === 'G') ? 'correctWord' : array[5][index] === 'Y' ? 'partialLetters' : array[5][index] === '-' ? 'incorrectWord' : null))} key={index + 1}><BoxSx letter={letter} /></div>
                         ))}
                     </div>
 

@@ -12,10 +12,16 @@ import Box from '@mui/joy/Box';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import PercentIcon from '@mui/icons-material/Percent';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Dropdown from '@mui/joy/Dropdown';
+import IconButton from '@mui/joy/IconButton';
+import Menu from '@mui/joy/Menu';
+import MenuButton from '@mui/joy/MenuButton';
+import MenuItem from '@mui/joy/MenuItem';
+import MenuIcon from '@mui/icons-material/Menu';
+import ShortTextSharpIcon from '@mui/icons-material/ShortTextSharp';
 import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import AnimationIcon from '@mui/icons-material/Animation';
-
 
 export default function Nav(props) {
 
@@ -50,26 +56,30 @@ export default function Nav(props) {
     return (
         <nav id="navbar" className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container" style={{ padding: '0px 10px' }}>
-                <span className="navbar-brand brand ml-auto" id="logo">W<AnimationIcon color="neutral" />RDL</span>
+                <span className="navbar-brand brand ml-auto" id="logo">WRDL</span>
 
                 <span className="navbar-brand brand mr-auto" id="logo">
                     <span style={{ margin: 3 }}>
-                        <Button onClick={newGame} variant="soft" color="success">New Game</Button>
-                    </span>
-                    <span style={{ margin: 3 }}>
-                        <Tooltip color="primary" title="Stats" onClick={() => setOpen2(true)}>
-                            <IconButton>
-                                <LeaderboardOutlinedIcon />
-                            </IconButton>
-                        </Tooltip>
-                    </span>
-                    <span style={{ margin: 3 }}>
                         <Tooltip title="Info" onClick={() => setOpen(true)}>
                             <IconButton>
-                                <HelpOutlineIcon color="neutral" />
+                                <LeaderboardOutlinedIcon color="neutral" />
                             </IconButton>
                         </Tooltip>
                     </span>
+                    <Dropdown>
+                        <MenuButton
+                            id='apps'
+                            slots={{ root: IconButton }}
+                            slotProps={{ root: { variant: 'outlined', color: 'neutral' } }}
+                            sx={{ border: 'none' }}
+                        >
+                            <ShortTextSharpIcon />
+                        </MenuButton>
+                        <Menu>
+                            <MenuItem id='apps' onClick={newGame}><KeyboardArrowDownIcon /> New Game</MenuItem>
+                            <MenuItem id='apps' onClick={() => setOpen(true)}><HelpOutlineIcon /> Info </MenuItem>
+                        </Menu>
+                    </Dropdown>
                 </span>
             </div>
 
