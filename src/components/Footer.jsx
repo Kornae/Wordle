@@ -93,7 +93,7 @@ export default function ColorInversionFooter() {
                         sx={{ flexGrow: 0, '--ListItem-radius': '8px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                     >
                         <ListItem nested sx={{ width: { xs: '50%', md: 140 } }}>
-                            <ListSubheader sx={{ fontFamily: 'Montserrat', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>©2024 WORDL</ListSubheader>
+                            <ListSubheader sx={{ fontFamily: 'Montserrat', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>©2024 WRDL</ListSubheader>
                         </ListItem>
                     </List>
 

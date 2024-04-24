@@ -12,18 +12,9 @@ import Box from '@mui/joy/Box';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import PercentIcon from '@mui/icons-material/Percent';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import Dropdown from '@mui/joy/Dropdown';
-import IconButton from '@mui/joy/IconButton';
-import Menu from '@mui/joy/Menu';
-import MenuButton from '@mui/joy/MenuButton';
-import MenuItem from '@mui/joy/MenuItem';
-import ShortTextSharpIcon from '@mui/icons-material/ShortTextSharp';
-import Tooltip from '@mui/material/Tooltip';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 export default function Nav(props) {
-
     function Stat({ description, value }) {
         return (
             <Box sx={{ borderLeft: 3, borderColor: 'divider', px: 2, py: 0.5 }}>
@@ -57,28 +48,25 @@ export default function Nav(props) {
             <div className="container" style={{ padding: '0px 10px' }}>
                 <span className="navbar-brand brand ml-auto logo-text" id="logo">WRDL</span>
 
+
                 <span className="navbar-brand brand mr-auto" id="logo">
                     <span style={{ margin: 3 }}>
-                        <Tooltip title="Info" onClick={() => setOpen2(true)}>
-                            <IconButton>
-                                <LeaderboardOutlinedIcon id="apps" color="neutral" />
-                            </IconButton>
-                        </Tooltip>
+                        <Button onClick={() => setOpen(true)} variant="soft" id="apps" color="neutral">
+                            <HelpOutlineIcon id="apps" color="neutral" />
+                        </Button>
                     </span>
-                    <Dropdown>
-                        <MenuButton
-                            id='apps'
-                            slots={{ root: IconButton }}
-                            slotProps={{ root: { variant: 'outlined', color: 'neutral' } }}
-                            sx={{ border: 'none' }}
-                        >
-                            <ShortTextSharpIcon />
-                        </MenuButton>
-                        <Menu>
-                            <MenuItem id='apps' onClick={newGame}><ArrowRightIcon /> New Game</MenuItem>
-                            <MenuItem id='apps' onClick={() => setOpen(true)}><HelpOutlineIcon /> Info </MenuItem>
-                        </Menu>
-                    </Dropdown>
+                    
+                    <span style={{ margin: 3 }}>
+                        <Button onClick={() => setOpen2(true)} variant="soft" id="apps" color="primary">
+                            <LeaderboardOutlinedIcon id="apps" color="neutral" />
+                        </Button>
+                    </span>
+
+                    <span style={{ margin: 3 }}>
+                        <Button onClick={newGame} variant="soft" id="apps" color="success">
+                           New Game <ArrowRightIcon id="apps" color="neutral" />
+                        </Button>
+                    </span>
                 </span>
             </div>
 
