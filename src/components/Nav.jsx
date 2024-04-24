@@ -12,16 +12,15 @@ import Box from '@mui/joy/Box';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import PercentIcon from '@mui/icons-material/Percent';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Dropdown from '@mui/joy/Dropdown';
 import IconButton from '@mui/joy/IconButton';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
-import MenuIcon from '@mui/icons-material/Menu';
 import ShortTextSharpIcon from '@mui/icons-material/ShortTextSharp';
 import Tooltip from '@mui/material/Tooltip';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 export default function Nav(props) {
 
@@ -56,13 +55,13 @@ export default function Nav(props) {
     return (
         <nav id="navbar" className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container" style={{ padding: '0px 10px' }}>
-                <span className="navbar-brand brand ml-auto" id="logo">WRDL</span>
+                <span className="navbar-brand brand ml-auto logo-text" id="logo">WRDL</span>
 
                 <span className="navbar-brand brand mr-auto" id="logo">
                     <span style={{ margin: 3 }}>
                         <Tooltip title="Info" onClick={() => setOpen2(true)}>
                             <IconButton>
-                                <LeaderboardOutlinedIcon color="neutral" />
+                                <LeaderboardOutlinedIcon id="apps" color="neutral" />
                             </IconButton>
                         </Tooltip>
                     </span>
@@ -76,7 +75,7 @@ export default function Nav(props) {
                             <ShortTextSharpIcon />
                         </MenuButton>
                         <Menu>
-                            <MenuItem id='apps' onClick={newGame}><KeyboardArrowDownIcon /> New Game</MenuItem>
+                            <MenuItem id='apps' onClick={newGame}><ArrowRightIcon /> New Game</MenuItem>
                             <MenuItem id='apps' onClick={() => setOpen(true)}><HelpOutlineIcon /> Info </MenuItem>
                         </Menu>
                     </Dropdown>

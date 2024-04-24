@@ -71,16 +71,21 @@ body {
   outline: none;
 }
 
-
-
 #logo {
-  font-size: 1rem;
+  font-size: .87rem;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
+  color: #2a2a2a;
+}
+
+.logo-text {
+    text-shadow: 0px 15px 5px rgba(0, 0, 0, 0.05),
+        10px 20px 5px rgba(0, 0, 0, 0.02),
+        -10px 20px 5px rgba(0, 0, 0, 0.0);
 }
 
 #example {
